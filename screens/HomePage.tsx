@@ -8,7 +8,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
 
-const HomePage = () => {
+const HomePage = ({navigation}:any) => {
+  
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#1E1E1E', }}>
       <View style={styles.headingContainer}>
@@ -17,7 +18,9 @@ const HomePage = () => {
             <Text style={styles.navbarText}>Find Your Tribe</Text>
             <Text style={styles.descriptionText}>Connect with people who share your interests!</Text>
           </View>
-          <TouchableOpacity style={styles.iconStyle}>
+          <TouchableOpacity style={styles.iconStyle}  onPress={() => {
+            navigation.navigate('Notifications');
+          }}>
             <Ionicons name='notifications-outline' size={(heightToDP('4%'))} color='white' />
           </TouchableOpacity>
         </View>
@@ -105,8 +108,6 @@ const styles = StyleSheet.create({
     backgroundColor:'#3E3E3E',
     marginTop: heightToDP('2%')
   }
-
-
 
 })
 
