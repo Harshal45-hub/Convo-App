@@ -3,6 +3,8 @@ import React from 'react'
 import { widthToDP, heightToDP } from 'react-native-responsive-screens'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import LinearGradient from 'react-native-linear-gradient';
+import { AuthGradient } from '../Login&AccountPages/LoginStack';
 
 
 
@@ -11,7 +13,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 const HomePage = ({navigation}:any) => {
   
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#1E1E1E', }}>
+    <LinearGradient colors={AuthGradient} style={{flex:1}}>
       <View style={styles.headingContainer}>
         <View style={styles.mainContainer}>
           <View style={styles.navbarContainer}>
@@ -37,7 +39,7 @@ const HomePage = ({navigation}:any) => {
         <View style={styles.contentContainer}></View>
         <View style={styles.contentContainer}></View>
       </ScrollView>
-    </SafeAreaView>
+    </LinearGradient>
   )
 }
 
@@ -47,7 +49,6 @@ const styles = StyleSheet.create({
   headingContainer:{
     width: widthToDP('100%'),
     height: heightToDP('23%'),
-    backgroundColor:'#1E1E1E',
     zIndex:10,
     elevation:5
   },

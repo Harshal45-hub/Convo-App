@@ -5,100 +5,108 @@ import {
   TextInput,
   TouchableOpacity,
   StyleSheet,
-  Image
+  Image,
+  ScrollView
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import { heightToDP,widthToDP } from 'react-native-responsive-screens';
+import { heightToDP, widthToDP } from 'react-native-responsive-screens';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
-const LoginSignUp: React.FC = ({navigation}:any) => {
+const LoginSignUp: React.FC = ({ navigation }: any) => {
   return (
+
     <LinearGradient
       colors={['#0F172A', '#0B0F1A']}
       style={styles.container}
     >
-      <Image
-        source={{ uri: 'https://i.postimg.cc/vHvxcWMw/file-00000000e8c47206871f57700ab15b21.png'}}
-        style={{ width: '95%', height: heightToDP('30%'), borderRadius: widthToDP('10%'), opacity: 1, alignSelf: 'center', marginBottom: 24 }}
-      />
       
-      {/* Title */}
-      <Text style={styles.title}>Find Your Tribe</Text>
-      <Text style={styles.subtitle}>
-        Connect with like-minded people
-      </Text>
-
-      {/* Email */}
-      <View style={styles.inputBox}>
-        <Ionicons name="mail-outline" size={20} color="#9CA3AF" />
-        <TextInput
-          placeholder="Email address"
-          placeholderTextColor="#6B7280"
-          style={styles.input}
-          keyboardType="email-address"
-          autoCapitalize="none"
+        <Image
+          source={{ uri: 'https://i.postimg.cc/Xv87d78m/file-0000000007387206a595bb400334bf4b.png' }}
+          style={{ width: '95%', height: heightToDP('30%'), borderRadius: widthToDP('10%'), opacity: 1, alignSelf: 'center', marginBottom: 24 }}
         />
-      </View>
-
-      {/* Password */}
-      <View style={styles.inputBox}>
-        <Ionicons name="lock-closed-outline" size={20} color="#9CA3AF" />
-        <TextInput
-          placeholder="Password"
-          placeholderTextColor="#6B7280"
-          secureTextEntry
-          style={styles.input}
-        />
-        <Ionicons name="eye-outline" size={20} color="#6B7280" />
-      </View>
-
-      {/* Forgot Password */}
-      <TouchableOpacity style={styles.forgotContainer}>
-        <Text style={styles.forgotText}>Forgot Password?</Text>
-      </TouchableOpacity>
-
-      {/* Login Button */}
-      <TouchableOpacity activeOpacity={0.9} onPress={() => {
-        navigation.replace('BottomTabs');
-      }}>
-        <LinearGradient
-          colors={['#3B82F6', '#2563EB']}
-          style={styles.loginButton}
-        >
-          <Text style={styles.loginText}>Login</Text>
-        </LinearGradient>
-      </TouchableOpacity>
-
-      {/* OR */}
-      <Text style={styles.orText}>OR</Text>
-
-      {/* Google Login */}
-      <TouchableOpacity style={styles.socialButton}>
-        <Ionicons name="logo-google" size={20} color="#DB4437" />
-        <Text style={styles.socialText}>
-          Continue with Google
+      
+        {/* Title */}
+        <Text style={styles.title}>Find Your Tribe</Text>
+        <Text style={styles.subtitle}>
+          Connect with like-minded people
         </Text>
-      </TouchableOpacity>
+       
+       <ScrollView style={{flex:1}}>
+        {/* Email */}
+        <View style={styles.inputBox}>
+          <Ionicons name="mail-outline" size={20} color="#9CA3AF" />
+          <TextInput
+            placeholder="Email address"
+            placeholderTextColor="#6B7280"
+            style={styles.input}
+            keyboardType="email-address"
+            autoCapitalize="none"
+          />
+        </View>
 
-      {/* Apple Login */}
-      <TouchableOpacity style={[styles.socialButton, styles.appleButton]}>
-        <Ionicons name="logo-apple" size={20} color="#fff" />
-        <Text style={[styles.socialText, { color: '#fff' }]}>
-          Continue with Apple
-        </Text>
-      </TouchableOpacity>
+        {/* Password */}
+        <View style={styles.inputBox}>
+          <Ionicons name="lock-closed-outline" size={20} color="#9CA3AF" />
+          <TextInput
+            placeholder="Password"
+            placeholderTextColor="#6B7280"
+            secureTextEntry
+            style={styles.input}
+          />
+          <Ionicons name="eye-outline" size={20} color="#6B7280" />
+        </View>
+
+        {/* Forgot Password */}
+        <TouchableOpacity style={styles.forgotContainer}>
+          <Text style={styles.forgotText}>Forgot Password?</Text>
+        </TouchableOpacity>
+
+        {/* Login Button */}
+        <TouchableOpacity activeOpacity={0.9} onPress={() => {
+          navigation.replace('Information');
+        }}>
+          <LinearGradient
+            colors={['#3B82F6', '#2563EB']}
+            style={styles.loginButton}
+          >
+            <Text style={styles.loginText}>Login</Text>
+          </LinearGradient>
+        </TouchableOpacity>
+
+        {/* OR */}
+        <Text style={styles.orText}>OR</Text>
+
+        {/* Google Login */}
+        <TouchableOpacity style={styles.socialButton}>
+          <Ionicons name="logo-google" size={20} color="#DB4437" />
+          <Text style={styles.socialText}>
+            Continue with Google
+          </Text>
+        </TouchableOpacity>
+
+        {/* Apple Login */}
+        <TouchableOpacity style={[styles.socialButton, styles.appleButton]}>
+          <Ionicons name="logo-apple" size={20} color="#fff" />
+          <Text style={[styles.socialText, { color: '#fff' }]}>
+            Continue with Apple
+          </Text>
+        </TouchableOpacity>
+      </ScrollView>
 
       {/* Signup */}
       <View style={styles.signupRow}>
         <Text style={styles.signupText}>
           Don’t have an account?
         </Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => {
+          navigation.navigate('SignUp')
+        }}>
           <Text style={styles.signupLink}> Sign Up</Text>
         </TouchableOpacity>
       </View>
     </LinearGradient>
+
   );
 };
 
@@ -196,6 +204,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     marginTop: 24,
+    zIndex: 10,
+    elevation: 5
   },
 
   signupText: {
